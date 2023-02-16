@@ -7,16 +7,11 @@
   box-sizing: border-box;
   font-family: "Space Mono", monospace;
 }
+
 body {
   font-weight: 400;
   font-size: 15px;
   line-height: 25px;
-}
-
-h1 {
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 38px;
 }
 
 h2 {
