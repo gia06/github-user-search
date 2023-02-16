@@ -38,8 +38,6 @@ const HeaderContainer = styled.div`
 const Title = styled.h1`
   color: ${({ theme }) => theme.titleColor};
   font-weight: ${({ theme }) => theme.boldWeight};
-  font-size: 26px;
-  line-height: 39px;
 `;
 
 const ThemeContainer = styled.div`

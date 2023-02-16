@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, getTheme } from "./assets/theme/themes";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import { GlobalStyle } from "./globalStyles";
 
 function App() {
   const [isLightTheme, setIsLightTheme] = useState<boolean>(getTheme);
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
+      <GlobalStyle />
       <AppContainer>
         <Main>
           <Header
