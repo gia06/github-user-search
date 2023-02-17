@@ -1,9 +1,21 @@
 import styled from "styled-components";
+import { SearchProps } from "../type/SearchType";
+import { useEffect } from "react";
 
-function Search() {
+function Search({ inputValue, setInputValue }: SearchProps) {
+  useEffect(() => {}, []);
+
+  const handleSubmit = (e: React.FormEvent) => {};
+
   return (
-    <SearchContainer>
-      <SearchInput autoComplete="" placeholder="Search Github username..." />
+    <SearchContainer onSubmit={(e) => handleSubmit(e)}>
+      <SearchInput
+        autoComplete=""
+        placeholder="Search GitHub username…"
+        onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
+        // onChange={(e) => console.log(e.currentTarget.value)}
+      />
 
       <SearchButton type="submit" value="Search" />
     </SearchContainer>
@@ -12,7 +24,7 @@ function Search() {
 
 export default Search;
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,7 +37,7 @@ const SearchContainer = styled.div`
   padding: 7px;
   overflow: hidden;
 
-  @media (min-width: 375px) {
+  @media (max-width: 375px) {
     height: 60px;
   }
 `;
@@ -45,17 +57,24 @@ const SearchInput = styled.input`
   font-size: 18px;
   line-height: 25px;
 
-  @media (max-width: 375px) {
-    background-position: 16px;
-    padding-left: 50px;
-    font-size: 13px;
-  }
-
   ::placeholder {
     font-weight: ${({ theme }) => theme.regularWeight};
     font-size: 18px;
     line-height: 25px;
     color: ${({ theme }) => theme.placeHolderColor};
+  }
+
+  @media (max-width: 560px) {
+    background-position: 9px;
+    padding-left: 38px;
+    font-size: 13px;
+
+    ::placeholder {
+      font-family: "Space Mono";
+      font-weight: ${({ theme }) => theme.regularWeight};
+      font-size: 13px;
+      line-height: 25px;
+    }
   }
 `;
 

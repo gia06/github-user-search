@@ -3,10 +3,12 @@ import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, getTheme } from "./assets/theme/themes";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import User from "./components/User";
 import { GlobalStyle } from "./globalStyles";
 
 function App() {
   const [isLightTheme, setIsLightTheme] = useState<boolean>(getTheme);
+  const [inputValue, setInputValue] = useState<string>("");
 
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify({ isLightTheme }));
@@ -21,7 +23,8 @@ function App() {
             isLightTheme={isLightTheme}
             setIsLightTheme={setIsLightTheme}
           />
-          <Search />
+          <Search inputValue={inputValue} setInputValue={setInputValue} />
+          <User inputValue={inputValue} />
         </Main>
       </AppContainer>
     </ThemeProvider>
@@ -36,6 +39,7 @@ const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background: ${(props) => props.theme.bgColor};
+  transition: background-color 1s;
 `;
 
 const Main = styled.div`

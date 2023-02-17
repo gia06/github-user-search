@@ -30,7 +30,7 @@ const HeaderContainer = styled.div`
     margin-top: 140px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 560px) {
     margin-top: 31px;
   }
 `;
