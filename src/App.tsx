@@ -38,7 +38,11 @@ function App() {
             error={error}
             setError={setError}
           />
-          <User inputValue={inputValue} user={user} error={error} />
+          <User
+            // inputValue={inputValue}
+            user={user}
+            //  error={error}
+          />
         </Main>
       </AppContainer>
     </ThemeProvider>

@@ -18,6 +18,7 @@ export const lightTheme: ThemeType = {
   placeHolderColor: "#4B6A9B",
   loginColor: "#0079FF",
   errColor: "#F74646",
+  bioColor: "#4B6A9B",
 };
 
 export const darkTheme: ThemeType = {
@@ -37,6 +38,7 @@ export const darkTheme: ThemeType = {
   placeHolderColor: "#FFFFFF",
   loginColor: "#0079FF",
   errColor: "#F74646",
+  bioColor: "#FFFFFF",
 };
 
 export const getTheme = (): boolean => {

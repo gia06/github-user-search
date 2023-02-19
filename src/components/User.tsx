@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { UserProps } from "../type/UserType";
 
-function User({ inputValue, user, error }: UserProps) {
-  const formatDate = (isoString: string) => {
+function User({ user }: UserProps) {
+  const formatDate = (isoString: string): string => {
     const date = new Date(isoString);
 
     const day = date.getDate();
@@ -16,13 +16,39 @@ function User({ inputValue, user, error }: UserProps) {
     <UserContainer>
       <Avatar id="left" src={user?.avatar_url} />
       <UserInfo>
-        <UserBio>
+        <BasicInfo>
           <Avatar id="right" src={user?.avatar_url} />
+          <NameContainer>
+            <div>
+              <Name>{user?.name}</Name>
 
-          <Name>{user?.name}</Name>
+              <UserName>@{user?.login}</UserName>
+            </div>
 
-          <Login>@{user?.login}</Login>
-        </UserBio>
+            <CreationDate>
+              {user ? `Joined ${formatDate(user.created_at)}` : null}
+            </CreationDate>
+          </NameContainer>
+        </BasicInfo>
+        <Bio>{user?.bio}</Bio>
+        <UserStats>
+          <SingleStat>
+            <p>Repos</p>
+            <p>someradnom number</p>
+          </SingleStat>
+
+          <SingleStat>
+            <p>Followers</p>
+            <p>someradnom number</p>
+          </SingleStat>
+
+          <SingleStat>
+            <p>Following</p>
+            <p>someradnom number</p>
+          </SingleStat>
+        </UserStats>
+
+        {/* {user?.bio} */}
       </UserInfo>
     </UserContainer>
   );
@@ -48,7 +74,7 @@ const UserContainer = styled.div`
     display: none;
   }
 
-  @media (max-width: 870px) {
+  @media (max-width: 770px) {
     justify-content: center;
 
     #left {
@@ -57,11 +83,17 @@ const UserContainer = styled.div`
 
     #right {
       display: block;
+      margin-right: 41px;
+
+      @media (max-width: 645px) {
+        margin-right: 20px;
+      }
     }
   }
 
   @media (max-width: 375px) {
     margin-top: 16px;
+    padding: 33px 24px 49px 24px;
   }
 `;
 
@@ -69,7 +101,12 @@ const Avatar = styled.img`
   width: 117px;
   height 117px;
   border-radius: 50%;
+  margin-right: 41px;
 
+  @media (max-width: 645px) {
+    width: 70px;
+    height: 70px;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -81,12 +118,65 @@ const UserInfo = styled.div`
   }
 `;
 
-const UserBio = styled.div``;
+const BasicInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+
+const NameContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 const Name = styled.h1`
   color: ${({ theme }) => theme.titleColor};
+
+  @media (max-width: 645px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
-const Login = styled.h3`
+const UserName = styled.h3`
   color: ${({ theme }) => theme.loginColor};
 `;
+
+const CreationDate = styled.p`
+  color: ${({ theme }) => theme.bioColor};
+  line-height: 22px;
+
+  @media (max-width: 645px) {
+    font-size: 13px;
+    line-height: 19px;
+  }
+`;
+
+const Bio = styled.p`
+  color: ${({ theme }) => theme.bioColor};
+  margin-top: 20px;
+  text-align: justify;
+
+  @media (max-width: 770px) {
+    margin-top: 24px;
+  }
+
+  @media (max-width: 375px) {
+    margin-top: 33px;
+    font-size: 13px;
+  }
+`;
+
+const UserStats = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: ${({ theme }) => theme.bgColor};
+`;
+
+const SingleStat = styled.div``;

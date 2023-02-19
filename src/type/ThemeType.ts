@@ -15,4 +15,5 @@ export interface ThemeType {
   placeHolderColor: string;
   loginColor: string;
   errColor: string;
+  bioColor: string;
 }
