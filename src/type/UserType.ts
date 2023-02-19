@@ -34,7 +34,9 @@ export interface UserType {
 }
 
 export interface UserProps {
-  // inputValue: string;
   user: UserType | null;
-  // error: boolean;
+}
+
+export interface UserStatsProps {
+  user: UserType | null;
 }

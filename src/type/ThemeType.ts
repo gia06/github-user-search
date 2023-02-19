@@ -16,4 +16,5 @@ export interface ThemeType {
   loginColor: string;
   errColor: string;
   bioColor: string;
+  numberColor: string;
 }

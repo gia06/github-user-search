@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { UserProps } from "../type/UserType";
+import UserStats from "./UserStats";
 
 function User({ user }: UserProps) {
   const formatDate = (isoString: string): string => {
@@ -30,8 +31,12 @@ function User({ user }: UserProps) {
             </CreationDate>
           </NameContainer>
         </BasicInfo>
-        <Bio>{user?.bio}</Bio>
-        <UserStats>
+        <Bio>
+          asdjaklsdaklsdhasdhjalsdh asdhalksjdhajf jjy jh jjf jh sd askdasdj
+          {user?.bio}
+        </Bio>
+        <UserStats user={user} />
+        {/* <UserStats>
           <SingleStat>
             <p>Repos</p>
             <p>someradnom number</p>
@@ -46,7 +51,7 @@ function User({ user }: UserProps) {
             <p>Following</p>
             <p>someradnom number</p>
           </SingleStat>
-        </UserStats>
+        </UserStats> */}
 
         {/* {user?.bio} */}
       </UserInfo>
@@ -62,7 +67,7 @@ const UserContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   // TODO: need to change this later
-  height: 300px;
+  // height: 300px;
   max-height: 517px;
   margin-top: 24px;
   padding: 44px 48px 48px 48px;
@@ -170,13 +175,13 @@ const Bio = styled.p`
   }
 `;
 
-const UserStats = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: ${({ theme }) => theme.bgColor};
-`;
+// const UserStats = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: space-between;
+//   width: 100%;
+//   background: ${({ theme }) => theme.bgColor};
+// `;
 
-const SingleStat = styled.div``;
+// const SingleStat = styled.div``;
