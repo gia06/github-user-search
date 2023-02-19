@@ -13,4 +13,6 @@ export interface ThemeType {
   buttonHover: string;
   buttonBackground: string;
   placeHolderColor: string;
+  loginColor: string;
+  errColor: string;
 }
