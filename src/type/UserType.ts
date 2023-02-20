@@ -40,3 +40,15 @@ export interface UserProps {
 export interface UserStatsProps {
   user: UserType | null;
 }
+
+export interface BioProps {
+  bio: string | null | undefined;
+}
+
+export interface UserContactProps {
+  location: string | null;
+}
+
+export interface ContactProps {
+  available: boolean;
+}

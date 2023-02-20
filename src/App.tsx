@@ -4,7 +4,7 @@ import { getDefaultData } from "./api/api";
 import { lightTheme, darkTheme, getTheme } from "./assets/theme/themes";
 import Header from "./components/Header";
 import Search from "./components/Search";
-import User from "./components/User";
+import User from "./components/User/User";
 import { GlobalStyle } from "./globalStyles";
 import { UserType } from "./type/UserType";
 
@@ -38,11 +38,7 @@ function App() {
             error={error}
             setError={setError}
           />
-          <User
-            // inputValue={inputValue}
-            user={user}
-            //  error={error}
-          />
+          <User user={user} />
         </Main>
       </AppContainer>
     </ThemeProvider>

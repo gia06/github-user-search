@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { UserStatsProps } from "../type/UserType";
+import { UserStatsProps } from "../../type/UserType";
 
 function UserStats({ user }: UserStatsProps) {
   return (
@@ -30,12 +30,13 @@ const Stats = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 85px;
   margin-top: 32px;
   background: ${({ theme }) => theme.bgColor};
   border-radius: 10px;
 
   @media (max-width: 375px) {
-    margin-top: 25px;
+    // margin-top: 25px;
   }
 `;
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { UserProps } from "../type/UserType";
+import { UserProps, BioProps } from "../../type/UserType";
+import UserContact from "./UserContact";
 import UserStats from "./UserStats";
 
 function User({ user }: UserProps) {
@@ -21,7 +22,7 @@ function User({ user }: UserProps) {
           <Avatar id="right" src={user?.avatar_url} />
           <NameContainer>
             <div>
-              <Name>{user?.name}</Name>
+              <Name>{user?.name ? user?.name : user?.login}</Name>
 
               <UserName>@{user?.login}</UserName>
             </div>
@@ -31,29 +32,12 @@ function User({ user }: UserProps) {
             </CreationDate>
           </NameContainer>
         </BasicInfo>
-        <Bio>
-          asdjaklsdaklsdhasdhjalsdh asdhalksjdhajf jjy jh jjf jh sd askdasdj
-          {user?.bio}
+
+        <Bio bio={user?.bio}>
+          {user?.bio ? user?.bio : "This profile has no bio"}
         </Bio>
         <UserStats user={user} />
-        {/* <UserStats>
-          <SingleStat>
-            <p>Repos</p>
-            <p>someradnom number</p>
-          </SingleStat>
-
-          <SingleStat>
-            <p>Followers</p>
-            <p>someradnom number</p>
-          </SingleStat>
-
-          <SingleStat>
-            <p>Following</p>
-            <p>someradnom number</p>
-          </SingleStat>
-        </UserStats> */}
-
-        {/* {user?.bio} */}
+        <UserContact user={user} />
       </UserInfo>
     </UserContainer>
   );
@@ -66,8 +50,6 @@ const UserContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  // TODO: need to change this later
-  // height: 300px;
   max-height: 517px;
   margin-top: 24px;
   padding: 44px 48px 48px 48px;
@@ -96,7 +78,7 @@ const UserContainer = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 400px) {
     margin-top: 16px;
     padding: 33px 24px 49px 24px;
   }
@@ -160,10 +142,11 @@ const CreationDate = styled.p`
   }
 `;
 
-const Bio = styled.p`
+const Bio = styled.p<BioProps>`
   color: ${({ theme }) => theme.bioColor};
+  opacity: ${({ bio }) => (bio ? "0" : "0.65")};
   margin-top: 20px;
-  text-align: justify;
+  text-align: left;
 
   @media (max-width: 770px) {
     margin-top: 24px;
@@ -174,14 +157,3 @@ const Bio = styled.p`
     font-size: 13px;
   }
 `;
-
-// const UserStats = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: space-between;
-//   width: 100%;
-//   background: ${({ theme }) => theme.bgColor};
-// `;
-
-// const SingleStat = styled.div``;
