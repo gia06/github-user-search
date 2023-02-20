@@ -16,6 +16,10 @@ export const lightTheme: ThemeType = {
   buttonColor: "#FFFFFF",
   buttonHover: "#60ABFF",
   placeHolderColor: "#4B6A9B",
+  loginColor: "#0079FF",
+  errColor: "#F74646",
+  bioColor: "#4B6A9B",
+  numberColor: "#2B3442",
 };
 
 export const darkTheme: ThemeType = {
@@ -33,6 +37,10 @@ export const darkTheme: ThemeType = {
   buttonColor: "#FFFFFF",
   buttonHover: "#60ABFF",
   placeHolderColor: "#FFFFFF",
+  loginColor: "#0079FF",
+  errColor: "#F74646",
+  bioColor: "#FFFFFF",
+  numberColor: "#FFFFFF",
 };
 
 export const getTheme = (): boolean => {

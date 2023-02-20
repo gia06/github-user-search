@@ -1,21 +1,36 @@
 import styled from "styled-components";
 import { SearchProps } from "../type/SearchType";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getInputBasedData } from "../api/api";
 
-function Search({ inputValue, setInputValue }: SearchProps) {
-  useEffect(() => {}, []);
+function Search({
+  inputValue,
+  setInputValue,
+  setUser,
+  error,
+  setError,
+}: SearchProps) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    getInputBasedData(inputValue, setUser, setError);
+    e.preventDefault();
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {};
+  useEffect(() => {
+    console.log("error is", error);
+  }, [error]);
 
   return (
-    <SearchContainer onSubmit={(e) => handleSubmit(e)}>
+    <SearchContainer
+      onSubmit={(e) => handleSubmit(e)}
+      onClick={(e) => console.log(e.target)}
+    >
       <SearchInput
-        autoComplete=""
+        autoComplete="off"
         placeholder="Search GitHub username…"
         onChange={(e) => setInputValue(e.target.value)}
         value={inputValue}
-        // onChange={(e) => console.log(e.currentTarget.value)}
       />
+      {error ? <ErrorMessage>No results</ErrorMessage> : null}
 
       <SearchButton type="submit" value="Search" />
     </SearchContainer>
@@ -28,6 +43,7 @@ const SearchContainer = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 69px;
   background: ${({ theme }) => theme.containerColor};
@@ -75,6 +91,20 @@ const SearchInput = styled.input`
       font-size: 13px;
       line-height: 25px;
     }
+  }
+`;
+
+const ErrorMessage = styled.p`
+  width: 200px;
+  color: ${({ theme }) => theme.errColor};
+  text-align: center;
+  font-weight: ${({ theme }) => theme.boldWeight};
+  line-height: 22px;
+
+  @media (max-width: 680px) {
+    font-weight: ${({ theme }) => theme.regularWeight};
+    font-size: 13px;
+    line-height: 25px;
   }
 `;
 

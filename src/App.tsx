@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
+import { getDefaultData } from "./api/api";
 import { lightTheme, darkTheme, getTheme } from "./assets/theme/themes";
 import Header from "./components/Header";
 import Search from "./components/Search";
-import User from "./components/User";
+import User from "./components/User/User";
 import { GlobalStyle } from "./globalStyles";
+import { UserType } from "./type/UserType";
 
 function App() {
   const [isLightTheme, setIsLightTheme] = useState<boolean>(getTheme);
   const [inputValue, setInputValue] = useState<string>("");
+  const [user, setUser] = useState<UserType | null>(null);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    getDefaultData(setUser, setError);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify({ isLightTheme }));
@@ -23,8 +31,14 @@ function App() {
             isLightTheme={isLightTheme}
             setIsLightTheme={setIsLightTheme}
           />
-          <Search inputValue={inputValue} setInputValue={setInputValue} />
-          <User inputValue={inputValue} />
+          <Search
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            setUser={setUser}
+            error={error}
+            setError={setError}
+          />
+          <User user={user} />
         </Main>
       </AppContainer>
     </ThemeProvider>
