@@ -121,7 +121,7 @@ const SearchButton = styled.input`
   font-size: 16px;
   line-height: 24px;
 
-  :active {
+  :hover {
     background: ${({ theme }) => theme.buttonHover};
     font-size: 14px;
     line-height: 21px;

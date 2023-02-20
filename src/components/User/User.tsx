@@ -90,7 +90,7 @@ const Avatar = styled.img`
   border-radius: 50%;
   margin-right: 41px;
 
-  @media (max-width: 645px) {
+  @media (max-width: 770px) {
     width: 70px;
     height: 70px;
   }
@@ -122,7 +122,7 @@ const NameContainer = styled.div`
 const Name = styled.h1`
   color: ${({ theme }) => theme.titleColor};
 
-  @media (max-width: 645px) {
+  @media (max-width: 770px) {
     font-size: 16px;
     line-height: 24px;
   }
