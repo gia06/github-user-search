@@ -6,7 +6,6 @@ import UserStats from "./UserStats";
 function User({ user }: UserProps) {
   const formatDate = (isoString: string): string => {
     const date = new Date(isoString);
-
     const day = date.getDate();
     const month = date.toLocaleDateString("default", { month: "short" });
     const year = date.getFullYear();
