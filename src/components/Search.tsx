@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { SearchProps } from "../type/SearchType";
-import { useEffect, useState } from "react";
 import { getInputBasedData } from "../api/api";
 
 function Search({
@@ -15,15 +14,8 @@ function Search({
     e.preventDefault();
   };
 
-  useEffect(() => {
-    console.log("error is", error);
-  }, [error]);
-
   return (
-    <SearchContainer
-      onSubmit={(e) => handleSubmit(e)}
-      onClick={(e) => console.log(e.target)}
-    >
+    <SearchContainer onSubmit={(e) => handleSubmit(e)}>
       <SearchInput
         autoComplete="off"
         placeholder="Search GitHub username…"
